@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      
+        <style>
+ .title{
+  padding-left: 15px; 
+  background-color: rgb(3, 116, 9);
+  color: white;
+  padding-top: 5px;
+
+ }
+ .user1, .user2{
+    text-decoration: none;
+    font-size: 25px;
+    padding-left: 30px;
+ }
+
+.user1{
+    color:rgb(3, 116, 9);
+}
+.user2{
+  color: black;
+}
+    .input-box {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      background-color: #fff;
+      border-top: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .plus-btn {
+      font-size: 24px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: red;
+    }
+
+    .plus-btn:hover {
+      color: #ff0808;
+    }
+
+    .input-box input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .send-btn {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      background-color: rgb(3, 116, 9);
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .send-btn:hover {
+      background-color: #0056b3;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+    .move{
+      margin: -2px;
+    }
+    .move1,.move2{
+      padding-left: 25px;
+      opacity: 0.5;
+    }
+    .live{
+      border-radius: 55px;
+      background-color: #13f826;
+      font-size: 8px;
+      margin-bottom: 12px;
+    }
+    .messenger {
+  width: 45%;
+  float: left;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 5px;
+}
+
+.messages {
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.message {
+  padding: 5px 10px;
+  margin: 5px 0;
+  max-width: 70%;
+  border-radius: 10px;
+  clear: both;
+}
+
+.left {
+  background-color: #e0f7fa;
+  float: left;
+}
+
+.right {
+  background-color: #ffe0b2;
+  float: right;
+}
+
+.chat1,
+      .chat2 {
+        width: 97%;
+        float: left;
+        padding: 10px;
+        border: 1px solid #ccc;
+        margin: 5px;
+        min-height: 400px;
+        overflow-y: auto;
+      background-color: #f7f4e6;
+      }
+      .hidden {
+  display: none;
+}
+
+.visible {
+  display: flex; /* Or whatever display value you want */
+}
+body{
+  background-color: #f7fcf7;
+  height: 100%;
+}
+#notf1,#notf2{
+  font-size: 12px;
+}
+
+#membership {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 300px;
+    }
+
+    #membership h2 {
+      margin-bottom: 20px;
+    }
+
+    #membership input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    #membership button {
+      width: 100%;
+      padding: 10px;
+      background-color: rgb(3, 116, 9);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    #membership button:hover {
+      background: #45a049;
+    }
+        </style>
+    </head>
+    <body>
+        
+        <h1 class="title">MESSANGER</h1>
+        <a href="#" class="user1" id="user1" onclick="user1()">Jack</a><a href="#" id="user2" onclick="user2()" class="user2">Joe</a>
+        <p class="move"><span class="move1" id="alert1">online</span><span class="live" id="notf1">&nbsp;&nbsp;&nbsp;</span>
+          <span class="move2" id="alert2">online</span><span class="live" id="notf2">&nbsp;&nbsp;&nbsp;</span></p>
+        <hr>
+        <div class="chat1" id="chat1"></div>
+        <div class="chat2 hidden" id="chat2"></div>
+        <div class="input-box" id="input-box1">
+            <button class="plus-btn" id="plusButton1" onclick="applyMembership(1);return false;">+</button>
+            <input type="file" id="fileInput1" accept="image/*" onchange="handleFile(event, 1)">
+        
+            <input type="text" id="input1" placeholder="Type a message..." />
+        
+            <button class="send-btn" onclick="sendMessage(1);return false;">Send</button>
+          </div>
+          <div class="input-box hidden" id="input-box2">
+            <button class="plus-btn" id="plusButton2" onclick="applyMembership(2);return false;">+</button>
+            <input type="file" id="fileInput2" accept="image/*" onchange="handleFile(event, 2)">
+        
+            <input type="text" id="input2" placeholder="Type a message..." />
+        
+            <button class="send-btn" onclick="sendMessage(2);return false;">Send</button>
+          </div>
+          <div id="membership" class="hidden">
+            <h2>Apply for Membership</h2>
+            <input type="text" id="nameInput" placeholder="Enter Name">
+            <input type="password" id="passwordInput" placeholder="Enter Password">
+            <button onclick="confirmMembership()">Confirm</button>
+          </div>
+          <script src="index.js"></script>
+    </body>
+    
+</html>
